@@ -23,6 +23,28 @@
     self.title = @"Tip Calculator";
     [self updateValues];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    float prevBillAmt = [defaults floatForKey:@"lastBillAmount"];
+    
+    if (prevBillAmt) {
+        int timestamp = (int) [defaults integerForKey:@"lastBillTime"];
+        int now = [[NSDate date] timeIntervalSince1970];
+        if (now < (timestamp + (60 * 2))) {
+            self.billTextField.text = [NSString stringWithFormat:@"%0.2f", prevBillAmt];
+        } else {
+            [defaults removeObjectForKey:@"lastBillAmount"];
+        }
+    }
+    
+    [self.billTextField becomeFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setFloat:[self.billTextField.text floatValue] forKey:@"lastBillAmount"];
+    [defaults setInteger:[[NSDate date] timeIntervalSince1970] forKey:@"lastBillTime"];
+    [defaults synchronize];
+
 }
 
 - (void)didReceiveMemoryWarning {
