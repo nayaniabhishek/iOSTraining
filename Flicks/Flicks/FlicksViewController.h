@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSString* endpoint;
 
+- (void)setIcon:(NSString*)imageName;
+
 @end
 

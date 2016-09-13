@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -34,6 +35,12 @@
     [self.posterImage setImageWithURL:[NSURL URLWithString:posterUrl]];
     
     [self.synopsisLabel sizeToFit];
+    
+    CGRect frame = self.scrollView.frame;
+    frame.size.height = self.synopsisLabel.frame.size.height + self.synopsisLabel.frame.origin.y + 10;
+    self.scrollView.frame = frame;
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 60 + self.scrollView.frame.origin.y + self.scrollView.frame.size.height);
     
 }
 

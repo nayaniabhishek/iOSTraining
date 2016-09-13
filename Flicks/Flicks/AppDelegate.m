@@ -23,14 +23,22 @@
     UINavigationController *topRatedNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MoviesNavigationController"];
     FlicksViewController *topRatedViewController = (FlicksViewController *)[topRatedNavigationController topViewController];
     topRatedViewController.endpoint = @"top_rated";
+    [topRatedViewController setIcon:@"star"];
+    [topRatedViewController setTitle:@"Top Rated"];
     
     
     UINavigationController *nowPlayingNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MoviesNavigationController"];
     FlicksViewController *nowPlayingController = (FlicksViewController *)[nowPlayingNavigationController topViewController];
     nowPlayingController.endpoint = @"now_playing";
+    [nowPlayingController setIcon:@"video"];
+    [nowPlayingController setTitle:@"Now Playing"];
+    
     
     TabBarViewController *tabBarController = [[TabBarViewController alloc] init];
-    tabBarController.viewControllers = @[topRatedNavigationController, nowPlayingNavigationController];
+    tabBarController.viewControllers = @[nowPlayingNavigationController, topRatedNavigationController];
+    tabBarController.tabBar.tintColor = [UIColor blackColor];
+    //[tabBarController.tabBar setTranslucent:NO];
+    
     
     self.window.rootViewController = tabBarController;
     

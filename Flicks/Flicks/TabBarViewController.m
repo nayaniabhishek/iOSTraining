@@ -8,7 +8,7 @@
 
 #import "TabBarViewController.h"
 
-@interface TabBarViewController ()
+@interface TabBarViewController () <UITabBarControllerDelegate>
 
 @end
 
@@ -16,12 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tabBarController.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+
+    UITabBarItem *item = [self.tabBar.items objectAtIndex:0];
+    item.image = [[UIImage imageNamed:@"video.png"]
+                  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    
+    NSLog(@"XXXXXXXXXXXXX");
 }
 
 /*

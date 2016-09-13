@@ -10,30 +10,49 @@
 #import "MovieTableViewCell.h"
 #import "MovieDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "MBProgressHUD.h"
+
 
 @interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray* movies;
+@property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITabBarItem *tabBarItem;
+@property (nonatomic) UIRefreshControl *refreshControl;
 
 
 @end
 
 @implementation FlicksViewController
 
+- (void)setIcon:(NSString*)imageName {
+    self.tabBarItem.image = [UIImage imageNamed:imageName];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    //self.navigationController.visibleViewController.title = @"TTTTTTT";
-    self.title = @"Playing Now";
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = self.tableView.backgroundColor;
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Pull to refresh"];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self fetchData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+
+- (void)fetchData {
     NSString *apiKey = @"a07e22bc18f5cb106bfe4cc1f83ad8ed";
-    NSString *urlString =
-    [@"https://api.themoviedb.org/3/movie/now_playing?api_key=" stringByAppendingString:apiKey];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=%@",
+                           self.endpoint, apiKey];
+    
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
@@ -53,7 +72,7 @@
                                                     [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
                                                                                       error:&jsonError];
-                                                    NSLog(@"Response: %@", responseDictionary);
+                                                    //NSLog(@"Response: %@", responseDictionary);
                                                     self.movies = responseDictionary[@"results"];
                                                     [self.tableView reloadData];
                                                 } else {
@@ -61,8 +80,7 @@
                                                 }
                                             }];
     [task resume];
-    
-    
+    [self.refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
