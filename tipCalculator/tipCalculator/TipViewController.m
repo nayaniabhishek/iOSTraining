@@ -29,10 +29,13 @@
     if (prevBillAmt) {
         int timestamp = (int) [defaults integerForKey:@"lastBillTime"];
         int now = [[NSDate date] timeIntervalSince1970];
-        if (now < (timestamp + (60 * 2))) {
+        if (now < (timestamp + (60 * 10))) {
             self.billTextField.text = [NSString stringWithFormat:@"%0.2f", prevBillAmt];
         } else {
             [defaults removeObjectForKey:@"lastBillAmount"];
+            
+            // tableview dequuereusablecellwithidentifier
+            // tableview indexpathforcell
         }
     }
     
