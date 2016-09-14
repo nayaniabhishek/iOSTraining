@@ -58,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HBI-QN-Ag3" id="pDf-FW-5nX">
-                                            <frame key="frameInset" width="375" height="85.5"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BEs-fm-gOd">
@@ -100,6 +100,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Search" id="KyD-Qz-cll">
+                                <frame key="frameInset" minY="279" width="61.07%" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.61568627450980395" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -125,6 +130,7 @@
                     <connections>
                         <outlet property="collectionView" destination="kDa-EW-ty2" id="dKl-YR-TJS"/>
                         <outlet property="networkErrorLabel" destination="JXd-pJ-pjF" id="2LI-nJ-LVO"/>
+                        <outlet property="searchBar" destination="KyD-Qz-cll" id="plN-ES-jfg"/>
                         <outlet property="tabBarItem" destination="pjw-hQ-1Eo" id="pX3-Yf-of5"/>
                         <outlet property="tableView" destination="6Oe-Wg-yny" id="pDA-Vt-jeS"/>
                         <outlet property="viewSelector" destination="mVa-VC-JzX" id="L5D-8S-Ypo"/>
@@ -132,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="351"/>
+            <point key="canvasLocation" x="693.5" y="350.5"/>
         </scene>
         <!--Movie Details View Controller-->
         <scene sceneID="axY-Fq-3HC">

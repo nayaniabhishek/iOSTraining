@@ -14,7 +14,7 @@
 #import "MBProgressHUD.h"
 
 
-@interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic) IBOutlet UITableView *tableView;
@@ -25,6 +25,9 @@
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *viewSelector;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (nonatomic) NSMutableArray *filteredList;
 
 @end
 
@@ -36,6 +39,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchBar];
+    self.navigationItem.leftBarButtonItem = searchBarItem;
+    self.searchBar.delegate = self;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -80,7 +87,6 @@
     }
     
     [fromView removeFromSuperview];
-   // fromView.superview = nil;
     
     toView.frame = self.view.bounds;
     [self.view addSubview:toView];
@@ -123,19 +129,66 @@
     [self.refreshControl endRefreshing];
 }
 
+
+- (void)fetchSearchData {
+    NSString *apiKey = @"a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/search/movie?api_key=%@&query=%@",
+                           apiKey, self.searchBar.text];
+    
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    
+    NSURLSession *session =
+    [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                  delegate:nil
+                             delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                if (!error) {
+                                                    NSError *jsonError = nil;
+                                                    NSDictionary *responseDictionary =
+                                                    [NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:kNilOptions
+                                                                                      error:&jsonError];
+                                                    //NSLog(@"Response: %@", responseDictionary);
+                                                    self.movies = responseDictionary[@"results"];
+                                                    [self.tableView reloadData];
+                                                } else {
+                                                    NSLog(@"An error occurred: %@", error.description);
+                                                    self.networkErrorLabel.hidden = false;
+                                                }
+                                            }];
+    [task resume];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    if (self.filteredList) {
+        return self.filteredList.count;
+    } else {
+        return self.movies.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie;
+    if (self.filteredList) {
+        movie = self.filteredList[indexPath.row];
+    } else {
+        movie = self.movies[indexPath.row];
+    }
+    
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
@@ -165,7 +218,11 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    if (self.filteredList) {
+        return self.filteredList.count;
+    } else {
+        return self.movies.count;
+    }
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -173,8 +230,12 @@
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
     
-    NSDictionary *movie = self.movies[indexPath.row];
-    
+    NSDictionary *movie;
+    if (self.filteredList) {
+        movie = self.filteredList[indexPath.row];
+    } else {
+        movie = self.movies[indexPath.row];
+    }
     
     NSString *thumbnailUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w92%@", movie[@"poster_path"]];
     
@@ -184,6 +245,41 @@
  
 }
 
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar endEditing:YES];
+    
+    self.filteredList = [[NSMutableArray alloc] init];
+    
+    for (id movie in self.movies) {
+        if ([movie[@"title"] rangeOfString:searchBar.text options:NSCaseInsensitiveSearch].location != NSNotFound) {
+            [self.filteredList addObject:movie];
+        }
+    }
+    
+    [self.tableView reloadData];
+    [self.collectionView reloadData];
+}
+
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar endEditing:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar setText:@""];
+    [searchBar endEditing:YES];
+    
+    self.filteredList = nil;
+    [self.tableView reloadData];
+    [self.collectionView reloadData];
+}
 
 
 @end
