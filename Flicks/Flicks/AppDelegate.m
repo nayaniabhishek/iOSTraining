@@ -37,8 +37,7 @@
     TabBarViewController *tabBarController = [[TabBarViewController alloc] init];
     tabBarController.viewControllers = @[nowPlayingNavigationController, topRatedNavigationController];
     tabBarController.tabBar.tintColor = [UIColor blackColor];
-    //[tabBarController.tabBar setTranslucent:NO];
-    
+    [[UITabBar appearance] setBarTintColor:nowPlayingController.view.backgroundColor];
     
     self.window.rootViewController = tabBarController;
     
