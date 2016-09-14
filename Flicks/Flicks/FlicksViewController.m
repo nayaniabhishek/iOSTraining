@@ -17,12 +17,12 @@
 @interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *movies;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBarItem;
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (weak, nonatomic) IBOutlet UILabel *networkErrorLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *viewSelector;
 
@@ -39,9 +39,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.networkErrorLabel setHidden:YES];
+    self.networkErrorLabel.hidden = true;
     
-    self.tableView.frame = self.view.bounds;
     [self.view addSubview:self.tableView];
     
     // Initialize the refresh control.
@@ -59,8 +58,7 @@
 - (IBAction)changeView:(id)sender {
     UIView *fromView, *toView;
     
-    if (self.tableView.superview == self.view)
-    {
+    if (self.tableView.superview == self.view) {
         fromView = self.tableView;
         toView = self.collectionView;
         self.collectionView.dataSource = self;
@@ -78,6 +76,7 @@
     }
     
     [fromView removeFromSuperview];
+   // fromView.superview = nil;
     
     toView.frame = self.view.bounds;
     [self.view addSubview:toView];
@@ -113,7 +112,7 @@
                                                     [self.tableView reloadData];
                                                 } else {
                                                     NSLog(@"An error occurred: %@", error.description);
-                                                    [self.networkErrorLabel setHidden:NO];
+                                                    self.networkErrorLabel.hidden = false;
                                                 }
                                             }];
     [task resume];
