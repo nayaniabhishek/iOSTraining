@@ -19,27 +19,26 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.61568627450000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ogz-aw-bYd">
-                                    <size key="itemSize" width="160" height="145"/>
+                                    <size key="itemSize" width="157" height="225"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" reuseIdentifier="MovieCollectionCell" id="WyG-QR-3ui" customClass="MovieCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="145"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" preservesSuperviewLayoutMargins="YES" reuseIdentifier="MovieCollectionCell" id="WyG-QR-3ui" customClass="MovieCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="157" height="225"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="157" height="225"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Qab-hk-7y9">
-                                                    <frame key="frameInset" width="167" height="145"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Qab-hk-7y9">
+                                                    <frame key="frameInset" width="157" height="247"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                        <size key="customSize" width="160" height="145"/>
+                                        <size key="customSize" width="157" height="225"/>
                                         <connections>
                                             <outlet property="poster" destination="Qab-hk-7y9" id="yBo-TV-Gc4"/>
                                             <segue destination="Gn9-8z-f4x" kind="push" identifier="MovieCellDetail" id="kUG-GH-DpF"/>

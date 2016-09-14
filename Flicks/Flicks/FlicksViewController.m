@@ -237,7 +237,7 @@
         movie = self.movies[indexPath.row];
     }
     
-    NSString *thumbnailUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w92%@", movie[@"poster_path"]];
+    NSString *thumbnailUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w342%@", movie[@"poster_path"]];
     
     [cell.poster setImageWithURL:[NSURL URLWithString:thumbnailUrl]];
     
