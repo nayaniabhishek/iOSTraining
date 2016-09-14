@@ -11,7 +11,7 @@ The following **required** functionality is completed:
 - [X] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [X] User can view movie details by tapping on a cell.
 - [X] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
+- [X] User sees an error message when there is a network error.
 - [X] User can pull to refresh the movie list.
 - [X] Add a tab bar for **Now Playing** and **Top Rated** movies.
 - [ ] Implement segmented control to switch between list view and grid view.
@@ -44,7 +44,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Abhishek Nayani]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

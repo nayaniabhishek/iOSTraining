@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITabBarItem *tabBarItem;
 @property (nonatomic) UIRefreshControl *refreshControl;
 
+@property (weak, nonatomic) IBOutlet UILabel *networkErrorLabel;
+
 
 @end
 
@@ -34,6 +36,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.networkErrorLabel setHidden:YES];
     
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -77,6 +80,7 @@
                                                     [self.tableView reloadData];
                                                 } else {
                                                     NSLog(@"An error occurred: %@", error.description);
+                                                    [self.networkErrorLabel setHidden:NO];
                                                 }
                                             }];
     [task resume];

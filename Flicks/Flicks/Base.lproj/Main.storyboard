@@ -19,6 +19,14 @@
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.61568627450000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="0.88235294119999996" green="0.61568627450000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXd-pJ-pjF">
+                                    <rect key="frame" x="0.0" y="178" width="320" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.30334535256410255" green="0.18949964824056439" blue="0.18069421003835162" alpha="0.83265086206896555" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="1" reuseIdentifier="MovieCell" focusStyle="custom" rowHeight="86" id="HBI-QN-Ag3" customClass="MovieTableViewCell">
                                         <rect key="frame" x="0.0" y="92" width="320" height="86"/>
@@ -65,6 +73,7 @@
                     <navigationItem key="navigationItem" id="jeS-0q-T64"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="networkErrorLabel" destination="JXd-pJ-pjF" id="2LI-nJ-LVO"/>
                         <outlet property="tabBarItem" destination="pjw-hQ-1Eo" id="pX3-Yf-of5"/>
                         <outlet property="tableView" destination="6Oe-Wg-yny" id="pDA-Vt-jeS"/>
                     </connections>
