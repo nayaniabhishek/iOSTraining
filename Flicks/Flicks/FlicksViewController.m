@@ -46,6 +46,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.networkErrorLabel.hidden = true;
     
     [self.view addSubview:self.tableView];
@@ -201,19 +203,26 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSArray *movies;
+    if (self.filteredList) {
+        movies = self.filteredList;
+    } else {
+        movies = self.movies;
+    }
+
     if ([[segue identifier] isEqualToString:@"MovieDetail"]) {
         UITableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
         MovieDetailsViewController *vc = segue.destinationViewController;
-        vc.movie = self.movies[indexPath.row];
+        vc.movie = movies[indexPath.row];
         
     } else if ([[segue identifier] isEqualToString:@"MovieCellDetail"]) {
         UICollectionViewCell *cell = sender;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
         
         MovieDetailsViewController *vc = segue.destinationViewController;
-        vc.movie = self.movies[indexPath.row];
+        vc.movie = movies[indexPath.row];
     }
 }
 
