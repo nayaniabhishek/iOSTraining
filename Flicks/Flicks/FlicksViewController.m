@@ -55,6 +55,10 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
+- (void)viewDidLayoutSubviews {
+    self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0);
+}
+
 - (IBAction)changeView:(id)sender {
     UIView *fromView, *toView;
     
