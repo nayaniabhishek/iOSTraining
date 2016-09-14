@@ -13,6 +13,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kDa-EW-ty2">
+                                <rect key="frame" x="0.0" y="66" width="320" height="502"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" red="0.88235294119999996" green="0.61568627450000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ogz-aw-bYd">
+                                    <size key="itemSize" width="160" height="145"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" reuseIdentifier="MovieCollectionCell" id="WyG-QR-3ui" customClass="MovieCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="64" width="160" height="145"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="145"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Qab-hk-7y9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="145"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <size key="customSize" width="160" height="145"/>
+                                        <connections>
+                                            <outlet property="poster" destination="Qab-hk-7y9" id="yBo-TV-Gc4"/>
+                                            <segue destination="Gn9-8z-f4x" kind="push" identifier="MovieCellDetail" id="kUG-GH-DpF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Oe-Wg-yny">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -20,7 +54,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="0.88235294119999996" green="0.61568627450000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXd-pJ-pjF">
-                                    <rect key="frame" x="0.0" y="178" width="320" height="21"/>
+                                    <rect key="frame" x="0.0" y="114" width="320" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.30334535256410255" green="0.18949964824056439" blue="0.18069421003835162" alpha="0.83265086206896555" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -29,7 +63,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="1" reuseIdentifier="MovieCell" focusStyle="custom" rowHeight="86" id="HBI-QN-Ag3" customClass="MovieTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="86"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HBI-QN-Ag3" id="pDf-FW-5nX">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="85.5"/>
@@ -70,12 +104,28 @@
                         <color key="backgroundColor" red="0.88235294117647056" green="0.61568627450980395" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="star" id="pjw-hQ-1Eo"/>
-                    <navigationItem key="navigationItem" id="jeS-0q-T64"/>
+                    <navigationItem key="navigationItem" id="jeS-0q-T64">
+                        <barButtonItem key="rightBarButtonItem" id="acv-XB-Hoq">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="mVa-VC-JzX">
+                                <rect key="frame" x="233" y="8" width="71" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="" image="table"/>
+                                    <segment title="" image="grid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeView:" destination="BYZ-38-t0r" eventType="valueChanged" id="jah-01-3fX"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="collectionView" destination="kDa-EW-ty2" id="dKl-YR-TJS"/>
                         <outlet property="networkErrorLabel" destination="JXd-pJ-pjF" id="2LI-nJ-LVO"/>
                         <outlet property="tabBarItem" destination="pjw-hQ-1Eo" id="pX3-Yf-of5"/>
                         <outlet property="tableView" destination="6Oe-Wg-yny" id="pDA-Vt-jeS"/>
+                        <outlet property="viewSelector" destination="mVa-VC-JzX" id="L5D-8S-Ypo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,6 +215,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="grid" width="16" height="16"/>
         <image name="star" width="24" height="24"/>
+        <image name="table" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kUG-GH-DpF"/>
+    </inferredMetricsTieBreakers>
 </document>

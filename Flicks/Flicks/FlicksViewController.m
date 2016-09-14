@@ -9,11 +9,12 @@
 #import "FlicksViewController.h"
 #import "MovieTableViewCell.h"
 #import "MovieDetailsViewController.h"
+#import "MovieCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
 
 
-@interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FlicksViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,7 +22,9 @@
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (weak, nonatomic) IBOutlet UILabel *networkErrorLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *viewSelector;
 
 @end
 
@@ -38,6 +41,9 @@
     self.tableView.delegate = self;
     [self.networkErrorLabel setHidden:YES];
     
+    self.tableView.frame = self.view.bounds;
+    [self.view addSubview:self.tableView];
+    
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = self.tableView.backgroundColor;
@@ -50,6 +56,33 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
+- (IBAction)changeView:(id)sender {
+    UIView *fromView, *toView;
+    
+    if (self.tableView.superview == self.view)
+    {
+        fromView = self.tableView;
+        toView = self.collectionView;
+        self.collectionView.dataSource = self;
+        self.collectionView.delegate = self;
+        
+        [self.collectionView reloadData];
+        
+    } else {
+        fromView = self.collectionView;
+        toView = self.tableView;
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        
+        [self.tableView reloadData];
+    }
+    
+    [fromView removeFromSuperview];
+    
+    toView.frame = self.view.bounds;
+    [self.view addSubview:toView];
+    
+}
 
 - (void)fetchData {
     NSString *apiKey = @"a07e22bc18f5cb106bfe4cc1f83ad8ed";
@@ -118,7 +151,36 @@
         
         MovieDetailsViewController *vc = segue.destinationViewController;
         vc.movie = self.movies[indexPath.row];
+        
+    } else if ([[segue identifier] isEqualToString:@"MovieCellDetail"]) {
+        UICollectionViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        
+        MovieDetailsViewController *vc = segue.destinationViewController;
+        vc.movie = self.movies[indexPath.row];
     }
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movies.count;
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
+    
+    
+    NSDictionary *movie = self.movies[indexPath.row];
+    
+    
+    NSString *thumbnailUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w92%@", movie[@"poster_path"]];
+    
+    [cell.poster setImageWithURL:[NSURL URLWithString:thumbnailUrl]];
+    
+    return cell;
+ 
+}
+
+
 
 @end

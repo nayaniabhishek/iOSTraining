@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [X] User sees an error message when there is a network error.
 - [X] User can pull to refresh the movie list.
 - [X] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Implement segmented control to switch between list view and grid view.
+- [X] Implement segmented control to switch between list view and grid view.
 
 The following **optional** features are implemented:
 
