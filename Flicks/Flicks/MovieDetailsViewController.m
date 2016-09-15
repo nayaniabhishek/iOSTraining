@@ -9,6 +9,7 @@
 #import "MovieDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "YTPlayerView.h"
+#import "PosterViewController.h"
 
 
 @interface MovieDetailsViewController ()
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voteAvgLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapper;
 
 @property (nonatomic) NSDictionary *movieDetail;
 
@@ -55,7 +57,7 @@
     NSString *posterUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w342%@", self.movie[@"poster_path"]];
     
     [self.posterImage setImageWithURL:[NSURL URLWithString:posterUrl]];
-    
+
     CGRect frame = self.scrollView.frame;
     frame.size.height = self.synopsisLabel.frame.size.height + self.synopsisLabel.frame.origin.y + 10;
     self.scrollView.frame = frame;
@@ -87,7 +89,7 @@
                                                     [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
                                                                                       error:&jsonError];
-                                                    NSLog(@"Response: %@", responseDictionary);
+                                                    //NSLog(@"Response: %@", responseDictionary);
                                                     self.movieDetail = responseDictionary;
                                                     
                                                     long runtime = [self.movieDetail[@"runtime"] longValue];
@@ -124,14 +126,19 @@
     self.closeButton.hidden = true;
 }
 
-/*
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    NSLog(@"TAPPPP");
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    PosterViewController *pvc = [segue destinationViewController];
+    
+    pvc.posterUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/original%@", self.movie[@"poster_path"]];
 }
-*/
+
 
 @end

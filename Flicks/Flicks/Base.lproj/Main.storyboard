@@ -147,9 +147,13 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Huu-ut-Ig2">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Huu-ut-Ig2">
                                 <frame key="frameInset" minX="-3.73%" width="107.47%" maxY="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bnM-oj-MuY" appends="YES" id="tJ6-5S-HKs"/>
+                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" semanticContentAttribute="spatial" id="xQy-CX-aRI">
                                 <frame key="frameInset" minX="20" minY="276" width="280" height="236"/>
@@ -240,14 +244,52 @@
                         <outlet property="runtimeLabel" destination="yLl-sB-oLR" id="uqp-tS-PRY"/>
                         <outlet property="scrollView" destination="YZW-tG-dwR" id="bod-ip-6aS"/>
                         <outlet property="synopsisLabel" destination="x6o-W8-jPW" id="JcO-PK-5FS"/>
+                        <outlet property="tapper" destination="bnM-oj-MuY" id="fZw-Pb-Q85"/>
                         <outlet property="titleLabel" destination="UtH-Nx-zlZ" id="0mo-89-nFb"/>
                         <outlet property="voteAvgLabel" destination="j8V-Na-ovS" id="K5Z-MB-ZP9"/>
                         <outlet property="yearLabel" destination="qcN-F8-XTU" id="8Pr-6k-rso"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXT-OI-XPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" numberOfTapsRequired="2" id="bnM-oj-MuY">
+                    <connections>
+                        <action selector="onTap:" destination="Gn9-8z-f4x" id="qGq-Se-aAk"/>
+                        <segue destination="yFy-ci-Q2m" kind="push" id="Piw-xO-fYE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1155" y="351"/>
+        </scene>
+        <!--Poster View Controller-->
+        <scene sceneID="vGe-i5-7Uu">
+            <objects>
+                <viewController id="yFy-ci-Q2m" customClass="PosterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VGx-5G-CK8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" id="ik6-AF-KXS">
+                                <frame key="frameInset" minY="-32" width="375" height="699"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cross" id="JS1-Td-e1V">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3IF-e4-1zB"/>
+                    <connections>
+                        <outlet property="posterImageView" destination="JS1-Td-e1V" id="wxE-Kt-mZX"/>
+                        <outlet property="scrollView" destination="ik6-AF-KXS" id="VD1-Sh-frI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egZ-aF-4kS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671.5" y="350.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0p8-Sm-lVB">
@@ -284,7 +326,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kUG-GH-DpF"/>
+        <segue reference="F0K-zD-TM2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
