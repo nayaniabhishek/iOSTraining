@@ -19,8 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *voteAvgLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
-@property (nonatomic) NSArray *videos;
+@property (nonatomic) NSDictionary *movieDetail;
 
 @end
 
@@ -33,18 +36,25 @@
     
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"overview"];
-    self.yearLabel.text = self.movie[@"release_date"];
+    [self.synopsisLabel sizeToFit];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *releaseDate = [dateFormatter dateFromString:self.movie[@"release_date"]];
+    
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    
+    self.yearLabel.text = [dateFormatter stringFromDate:releaseDate];
     
     self.playerView.hidden = true;
     self.closeButton.hidden = true;
+    self.playButton.hidden = true;
     
-    [self fetchVideos];
+    [self fetchData];
     
     NSString *posterUrl = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w342%@", self.movie[@"poster_path"]];
     
     [self.posterImage setImageWithURL:[NSURL URLWithString:posterUrl]];
-    
-    [self.synopsisLabel sizeToFit];
     
     CGRect frame = self.scrollView.frame;
     frame.size.height = self.synopsisLabel.frame.size.height + self.synopsisLabel.frame.origin.y + 10;
@@ -54,10 +64,9 @@
     
 }
 
-- (void)fetchVideos {
+- (void)fetchData {
     NSString *apiKey = @"a07e22bc18f5cb106bfe4cc1f83ad8ed";
-    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=%@",
-                           self.movie[@"id"], apiKey];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=%@&append_to_response=videos", self.movie[@"id"], apiKey];
     
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -79,7 +88,18 @@
                                                                                     options:kNilOptions
                                                                                       error:&jsonError];
                                                     NSLog(@"Response: %@", responseDictionary);
-                                                    self.videos = responseDictionary[@"results"];
+                                                    self.movieDetail = responseDictionary;
+                                                    
+                                                    long runtime = [self.movieDetail[@"runtime"] longValue];
+                                                    long minutes = runtime % 60;
+                                                    long hours = (runtime - minutes) / 60;
+                                                    self.runtimeLabel.text = [NSString stringWithFormat:@"%ld hr and %ld mins", hours, minutes];
+                                                    self.voteAvgLabel.text = [NSString stringWithFormat:@"%@", self.movieDetail[@"vote_average"]];
+
+                                                    NSArray *videos = self.movieDetail[@"videos"][@"results"];
+                                                    if (videos.count > 0) {
+                                                        self.playButton.hidden = false;
+                                                    }
                                                 } else {
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
@@ -96,7 +116,7 @@
 - (IBAction)onPlay:(UIButton *)sender {
     self.playerView.hidden = false;
     self.closeButton.hidden = false;
-    [self.playerView loadWithVideoId:self.videos[0][@"key"]];
+    [self.playerView loadWithVideoId:self.movieDetail[@"videos"][@"results"][0][@"key"]];
 }
 
 - (IBAction)onClose:(UIButton *)sender {

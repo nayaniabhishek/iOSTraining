@@ -147,16 +147,16 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Huu-ut-Ig2">
-                                <frame key="frameInset" width="375" height="557"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Huu-ut-Ig2">
+                                <frame key="frameInset" minX="-3.73%" width="107.47%" maxY="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" semanticContentAttribute="spatial" id="xQy-CX-aRI">
                                 <frame key="frameInset" minX="20" minY="276" width="280" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dii-Kp-QrH">
-                                        <frame key="frameInset" minX="240" width="38" height="24"/>
+                                        <frame key="frameInset" minX="240" minY="5" width="38" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="play"/>
                                         <connections>
@@ -170,18 +170,18 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qcN-F8-XTU">
-                                        <frame key="frameInset" minX="8" minY="45" width="224" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qcN-F8-XTU">
+                                        <frame key="frameInset" minX="11" minY="36" width="101" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YZW-tG-dwR">
-                                        <frame key="frameInset" minX="8" minY="68" width="261" height="160"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="YZW-tG-dwR">
+                                        <frame key="frameInset" minX="11" minY="68" width="261" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x6o-W8-jPW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Summary" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x6o-W8-jPW">
                                                 <rect key="frame" x="0.0" y="0.0" width="261" height="151"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -190,6 +190,28 @@
                                             </label>
                                         </subviews>
                                     </scrollView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yLl-sB-oLR">
+                                        <frame key="frameInset" minX="158" minY="48" width="114" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="time" id="0As-lH-52a">
+                                        <frame key="frameInset" minX="134" minY="53" width="25" height="12"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rating" id="IRd-sc-D54">
+                                        <frame key="frameInset" minX="4" minY="53" width="24" height="12"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j8V-Na-ovS">
+                                        <frame key="frameInset" minX="24" minY="49" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.72606382978723405" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -212,17 +234,20 @@
                     <navigationItem key="navigationItem" id="eRJ-rn-fk3"/>
                     <connections>
                         <outlet property="closeButton" destination="RlF-zB-eks" id="ihj-Gq-eK4"/>
+                        <outlet property="playButton" destination="dii-Kp-QrH" id="19K-IY-2PT"/>
                         <outlet property="playerView" destination="CKr-gf-Fcq" id="01I-kD-dca"/>
                         <outlet property="posterImage" destination="Huu-ut-Ig2" id="iZy-Fa-dlt"/>
+                        <outlet property="runtimeLabel" destination="yLl-sB-oLR" id="uqp-tS-PRY"/>
                         <outlet property="scrollView" destination="YZW-tG-dwR" id="bod-ip-6aS"/>
                         <outlet property="synopsisLabel" destination="x6o-W8-jPW" id="JcO-PK-5FS"/>
                         <outlet property="titleLabel" destination="UtH-Nx-zlZ" id="0mo-89-nFb"/>
+                        <outlet property="voteAvgLabel" destination="j8V-Na-ovS" id="K5Z-MB-ZP9"/>
                         <outlet property="yearLabel" destination="qcN-F8-XTU" id="8Pr-6k-rso"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXT-OI-XPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087.5" y="350.5"/>
+            <point key="canvasLocation" x="1155" y="351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0p8-Sm-lVB">
@@ -248,8 +273,10 @@
         <image name="cross" width="16" height="16"/>
         <image name="grid" width="16" height="16"/>
         <image name="play" width="24" height="24"/>
+        <image name="rating" width="16" height="16"/>
         <image name="star" width="24" height="24"/>
         <image name="table" width="16" height="16"/>
+        <image name="time" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
