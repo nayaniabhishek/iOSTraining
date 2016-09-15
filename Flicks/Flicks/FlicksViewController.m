@@ -119,7 +119,7 @@
                                                     [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
                                                                                       error:&jsonError];
-                                                    //NSLog(@"Response: %@", responseDictionary);
+                                                    NSLog(@"Response: %@", responseDictionary);
                                                     self.movies = responseDictionary[@"results"];
                                                     [self.tableView reloadData];
                                                 } else {
@@ -130,43 +130,6 @@
     [task resume];
     [self.refreshControl endRefreshing];
 }
-
-
-- (void)fetchSearchData {
-    NSString *apiKey = @"a07e22bc18f5cb106bfe4cc1f83ad8ed";
-    NSString *urlString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/search/movie?api_key=%@&query=%@",
-                           apiKey, self.searchBar.text];
-    
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    
-    NSURLSession *session =
-    [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                  delegate:nil
-                             delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:^(NSData * _Nullable data,
-                                                                NSURLResponse * _Nullable response,
-                                                                NSError * _Nullable error) {
-                                                if (!error) {
-                                                    NSError *jsonError = nil;
-                                                    NSDictionary *responseDictionary =
-                                                    [NSJSONSerialization JSONObjectWithData:data
-                                                                                    options:kNilOptions
-                                                                                      error:&jsonError];
-                                                    //NSLog(@"Response: %@", responseDictionary);
-                                                    self.movies = responseDictionary[@"results"];
-                                                    [self.tableView reloadData];
-                                                } else {
-                                                    NSLog(@"An error occurred: %@", error.description);
-                                                    self.networkErrorLabel.hidden = false;
-                                                }
-                                            }];
-    [task resume];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

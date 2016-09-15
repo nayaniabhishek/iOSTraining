@@ -57,7 +57,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HBI-QN-Ag3" id="pDf-FW-5nX">
-                                            <frame key="frameInset" width="375" height="107"/>
+                                            <frame key="frameInset" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BEs-fm-gOd">
@@ -155,6 +155,14 @@
                                 <frame key="frameInset" minX="20" minY="276" width="280" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dii-Kp-QrH">
+                                        <frame key="frameInset" minX="240" width="38" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="onPlay:" destination="Gn9-8z-f4x" eventType="touchUpInside" id="KKT-ys-aQw"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UtH-Nx-zlZ">
                                         <frame key="frameInset" minX="8" minY="8" width="224" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,11 +193,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.72606382978723405" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" id="CKr-gf-Fcq" customClass="YTPlayerView">
+                                <frame key="frameInset" minX="28" minY="44" width="272" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RlF-zB-eks">
+                                <frame key="frameInset" minX="281" minY="32" width="39" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <action selector="onClose:" destination="Gn9-8z-f4x" eventType="touchUpInside" id="nGv-Jd-Brd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eRJ-rn-fk3"/>
                     <connections>
+                        <outlet property="closeButton" destination="RlF-zB-eks" id="ihj-Gq-eK4"/>
+                        <outlet property="playerView" destination="CKr-gf-Fcq" id="01I-kD-dca"/>
                         <outlet property="posterImage" destination="Huu-ut-Ig2" id="iZy-Fa-dlt"/>
                         <outlet property="scrollView" destination="YZW-tG-dwR" id="bod-ip-6aS"/>
                         <outlet property="synopsisLabel" destination="x6o-W8-jPW" id="JcO-PK-5FS"/>
@@ -222,7 +245,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cross" width="16" height="16"/>
         <image name="grid" width="16" height="16"/>
+        <image name="play" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
         <image name="table" width="16" height="16"/>
     </resources>
