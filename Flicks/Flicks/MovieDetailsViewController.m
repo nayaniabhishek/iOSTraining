@@ -94,7 +94,7 @@
                                                     long minutes = runtime % 60;
                                                     long hours = (runtime - minutes) / 60;
                                                     self.runtimeLabel.text = [NSString stringWithFormat:@"%ld hr and %ld mins", hours, minutes];
-                                                    self.voteAvgLabel.text = [NSString stringWithFormat:@"%@", self.movieDetail[@"vote_average"]];
+                                                    self.voteAvgLabel.text = [NSString stringWithFormat:@"%.1f", [self.movieDetail[@"vote_average"] floatValue]];
 
                                                     NSArray *videos = self.movieDetail[@"videos"][@"results"];
                                                     if (videos.count > 0) {
