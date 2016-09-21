@@ -130,5 +130,17 @@
       }];
 }
 
+- (void)sendTweetWithParams:(NSDictionary *)params text:text completion:(void (^)(NSString *, NSError *))completion {
+    [self
+     POST:[NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", text]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         completion(responseObject[@"id_str"], nil);
+         
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(nil, error);
+     }];
+}
+
 
 @end

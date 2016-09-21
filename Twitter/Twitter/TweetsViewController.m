@@ -7,12 +7,13 @@
 //
 
 #import "TweetsViewController.h"
+#import "ComposeViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
 
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation TweetsViewController
@@ -25,11 +26,19 @@
     [self.tableView setHidden:NO];
     
     [self refreshTweets];
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = self.tableView.backgroundColor;
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Pull to refresh"];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
+    
+
 }
 
 - (void)refreshTweets {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        
         NSLog(@"Refreshing tweets");
         if (error) {
             NSLog(@"Error getting timeline: %@", error);
@@ -38,7 +47,7 @@
             self.tweets = tweets;
             [self.tableView reloadData];
         }
-        
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -49,7 +58,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-    
     
     NSLog(@"Tweet : %@", self.tweets[indexPath.row]);
     [cell setTweet:self.tweets[indexPath.row]];
@@ -64,14 +72,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
 
 @end

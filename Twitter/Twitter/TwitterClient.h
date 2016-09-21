@@ -17,5 +17,5 @@
 - (void)handleOpenUrl:(NSString *)url;
 - (void)currentAccount:(NSDictionary *)params completion:(void (^)(User *user, NSError *error))completion;
 - (void)homeTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
-
+- (void)sendTweetWithParams:(NSDictionary *)params text:text completion:(void (^)(NSString *, NSError *))completion;
 @end
