@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD150EC71D92F6970023884C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EC61D92F6970023884C /* main.m */; };
+		AD150ECA1D92F6970023884C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EC91D92F6970023884C /* AppDelegate.m */; };
+		AD150ECD1D92F6970023884C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150ECC1D92F6970023884C /* ViewController.m */; };
+		AD150ED01D92F6970023884C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD150ECE1D92F6970023884C /* Main.storyboard */; };
+		AD150ED21D92F6970023884C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD150ED11D92F6970023884C /* Assets.xcassets */; };
+		AD150ED51D92F6970023884C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD150ED31D92F6970023884C /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AD150EC21D92F6970023884C /* Smileys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smileys.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD150EC61D92F6970023884C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD150EC81D92F6970023884C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD150EC91D92F6970023884C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD150ECB1D92F6970023884C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AD150ECC1D92F6970023884C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AD150ECF1D92F6970023884C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD150ED11D92F6970023884C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD150ED41D92F6970023884C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD150ED61D92F6970023884C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD150EBF1D92F6970023884C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD150EB91D92F6960023884C = {
+			isa = PBXGroup;
+			children = (
+				AD150EC41D92F6970023884C /* Smileys */,
+				AD150EC31D92F6970023884C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD150EC31D92F6970023884C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD150EC21D92F6970023884C /* Smileys.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD150EC41D92F6970023884C /* Smileys */ = {
+			isa = PBXGroup;
+			children = (
+				AD150EC81D92F6970023884C /* AppDelegate.h */,
+				AD150EC91D92F6970023884C /* AppDelegate.m */,
+				AD150ECB1D92F6970023884C /* ViewController.h */,
+				AD150ECC1D92F6970023884C /* ViewController.m */,
+				AD150ECE1D92F6970023884C /* Main.storyboard */,
+				AD150ED11D92F6970023884C /* Assets.xcassets */,
+				AD150ED31D92F6970023884C /* LaunchScreen.storyboard */,
+				AD150ED61D92F6970023884C /* Info.plist */,
+				AD150EC51D92F6970023884C /* Supporting Files */,
+			);
+			path = Smileys;
+			sourceTree = "<group>";
+		};
+		AD150EC51D92F6970023884C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD150EC61D92F6970023884C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD150EC11D92F6970023884C /* Smileys */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD150ED91D92F6970023884C /* Build configuration list for PBXNativeTarget "Smileys" */;
+			buildPhases = (
+				AD150EBE1D92F6970023884C /* Sources */,
+				AD150EBF1D92F6970023884C /* Frameworks */,
+				AD150EC01D92F6970023884C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smileys;
+			productName = Smileys;
+			productReference = AD150EC21D92F6970023884C /* Smileys.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD150EBA1D92F6960023884C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = yahoo;
+				TargetAttributes = {
+					AD150EC11D92F6970023884C = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AD150EBD1D92F6960023884C /* Build configuration list for PBXProject "Smileys" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD150EB91D92F6960023884C;
+			productRefGroup = AD150EC31D92F6970023884C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD150EC11D92F6970023884C /* Smileys */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD150EC01D92F6970023884C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD150ED51D92F6970023884C /* LaunchScreen.storyboard in Resources */,
+				AD150ED21D92F6970023884C /* Assets.xcassets in Resources */,
+				AD150ED01D92F6970023884C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD150EBE1D92F6970023884C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD150ECD1D92F6970023884C /* ViewController.m in Sources */,
+				AD150ECA1D92F6970023884C /* AppDelegate.m in Sources */,
+				AD150EC71D92F6970023884C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AD150ECE1D92F6970023884C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD150ECF1D92F6970023884C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD150ED31D92F6970023884C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD150ED41D92F6970023884C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD150ED71D92F6970023884C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD150ED81D92F6970023884C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD150EDA1D92F6970023884C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Smileys/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yahoo.Smileys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AD150EDB1D92F6970023884C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Smileys/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yahoo.Smileys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD150EBD1D92F6960023884C /* Build configuration list for PBXProject "Smileys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD150ED71D92F6970023884C /* Debug */,
+				AD150ED81D92F6970023884C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD150ED91D92F6970023884C /* Build configuration list for PBXNativeTarget "Smileys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD150EDA1D92F6970023884C /* Debug */,
+				AD150EDB1D92F6970023884C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD150EBA1D92F6960023884C /* Project object */;
+}
