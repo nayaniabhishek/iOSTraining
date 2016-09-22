@@ -9,6 +9,8 @@
 #import "HamburgerViewController.h"
 #import "TweetsViewController.h"
 #import "MenuCell.h"
+#import "LogoutCell.h"
+#import "User.h"
 
 @interface HamburgerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *menuView;
@@ -68,23 +70,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return [self.tableView dequeueReusableCellWithIdentifier:@"LogoutCell"];
+    }
+    
     MenuCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
     
     switch (indexPath.row) {
-        case 0:
+        case 1:
             cell.menuLabel.text = @"Profile";
             cell.menuIcon.image = [UIImage imageNamed:@"profile"];
             break;
-        case 1:
+        case 2:
             cell.menuLabel.text = @"Timeline";
             cell.menuIcon.image = [UIImage imageNamed:@"timeline"];
             break;
-        case 2:
+        case 3:
             cell.menuLabel.text = @"Mentions";
             cell.menuIcon.image = [UIImage imageNamed:@"mentions"];
             break;
@@ -95,10 +101,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    NSLog(@"Did call row %ld", indexPath.row);
     if (indexPath.row == 0) {
-        [self setContentViewController:self.profileViewController];
+        [User logout];
     } else if (indexPath.row == 1) {
+        [self setContentViewController:self.profileViewController];
+    } else if (indexPath.row == 2) {
         [self setContentViewController:self.tweetsViewController];
     } else {
         [self setContentViewController:self.mentionsViewController];
@@ -111,6 +119,9 @@
 
 }
 
+- (IBAction)onSignout:(id)sender {
+    [User logout];
+}
 
 - (IBAction)onSwipeRight:(UISwipeGestureRecognizer *)sender {
     [UIView animateWithDuration:.30 animations:^{

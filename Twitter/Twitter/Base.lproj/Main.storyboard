@@ -93,6 +93,30 @@
                                             <outlet property="menuLabel" destination="xAe-gJ-9bK" id="zlf-Me-oON"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoutCell" rowHeight="69" id="sz3-Go-FBb" customClass="LogoutCell">
+                                        <rect key="frame" x="0.0" y="63" width="375" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sz3-Go-FBb" id="8bc-St-69x">
+                                            <frame key="frameInset" width="375" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-gF-PJ8">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="SignOut">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onSignout:" destination="AXi-BW-qfF" eventType="touchUpInside" id="VQT-t9-SgV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.23430456790000001" green="0.71795279040000004" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="OMI-gF-PJ8" firstAttribute="leading" secondItem="8bc-St-69x" secondAttribute="leading" constant="8" id="iyu-4q-ABT"/>
+                                                <constraint firstItem="OMI-gF-PJ8" firstAttribute="centerY" secondItem="8bc-St-69x" secondAttribute="centerY" id="zdU-Jo-Ova"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twE-Jd-n35" userLabel="ContainerView">

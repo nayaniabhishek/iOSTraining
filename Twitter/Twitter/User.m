@@ -79,7 +79,9 @@ static User *_currentUser = nil;
 }
 
 + (void)logout {
+    NSLog(@"Starting LOgout");
     [self setCurrentUser:nil];
+    [[TwitterClient sharedInstance] deauthorize];
     [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];

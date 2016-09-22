@@ -14,14 +14,14 @@ The following **required** functionality is completed:
 - [X] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
 - [X] User can pull to refresh.
 - [X] User can compose a new tweet by tapping on a compose button.
-- [ ] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
+- [X] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 - [X] Hamburger menu
    - [X] Dragging anywhere in the view should reveal the menu.
    - [X] The menu should include links to your profile, the home timeline, and the mentions view.
-- [ ] Profile page
-   - [ ] Contains the user header view (implemented as a custom view)
-   - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] Home Timeline
+- [X] Profile page
+   - [X] Contains the user header view (implemented as a custom view)
+   - [X] Contains a section with the users basic stats: # tweets, # following, # followers
+- [X] Home Timeline
    - [ ] Tapping on a user image should bring up that user's profile page
 
 The following **optional** features are implemented:

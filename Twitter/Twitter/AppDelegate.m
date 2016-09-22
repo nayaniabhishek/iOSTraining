@@ -34,7 +34,7 @@
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }
     
-  
+    
     return YES;
 }
 
@@ -66,9 +66,17 @@
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
+    
     [[TwitterClient sharedInstance] handleOpenUrl:url.query];
     
     return YES;
+}
+
+- (void)userDidLogout {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 }
 
 @end

@@ -20,6 +20,7 @@
 		AD150EB81D92F3810023884C /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EB71D92F3810023884C /* MentionsViewController.m */; };
 		AD150EDE1D9341EA0023884C /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EDD1D9341EA0023884C /* ComposeViewController.m */; };
 		AD150EE11D9364E80023884C /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EE01D9364E80023884C /* TweetViewController.m */; };
+		AD150EE41D9493C30023884C /* LogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EE31D9493C30023884C /* LogoutCell.m */; };
 		AD6E43C31D9051200090D20F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6E43C21D9051200090D20F /* main.m */; };
 		AD6E43C61D9051200090D20F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6E43C51D9051200090D20F /* AppDelegate.m */; };
 		AD6E43CC1D9051200090D20F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6E43CA1D9051200090D20F /* Main.storyboard */; };
@@ -55,6 +56,8 @@
 		AD150EDD1D9341EA0023884C /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		AD150EDF1D9364E80023884C /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		AD150EE01D9364E80023884C /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
+		AD150EE21D9493C30023884C /* LogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutCell.h; sourceTree = "<group>"; };
+		AD150EE31D9493C30023884C /* LogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutCell.m; sourceTree = "<group>"; };
 		AD6E43BE1D9051200090D20F /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD6E43C21D9051200090D20F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AD6E43C41D9051200090D20F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				AD150EA71D91E0500023884C /* MenuCell.m */,
 				AD150EAF1D923B7A0023884C /* TweetCell.h */,
 				AD150EB01D923B7A0023884C /* TweetCell.m */,
+				AD150EE21D9493C30023884C /* LogoutCell.h */,
+				AD150EE31D9493C30023884C /* LogoutCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				AD150EB51D92F36D0023884C /* ProfileViewController.m in Sources */,
 				AD150EDE1D9341EA0023884C /* ComposeViewController.m in Sources */,
 				AD150E961D90BE790023884C /* LoginViewController.m in Sources */,
+				AD150EE41D9493C30023884C /* LogoutCell.m in Sources */,
 				AD150EAE1D923A340023884C /* TweetsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
