@@ -78,12 +78,15 @@
     switch (indexPath.row) {
         case 0:
             cell.menuLabel.text = @"Profile";
+            cell.menuIcon.image = [UIImage imageNamed:@"profile"];
             break;
         case 1:
             cell.menuLabel.text = @"Timeline";
+            cell.menuIcon.image = [UIImage imageNamed:@"timeline"];
             break;
         case 2:
             cell.menuLabel.text = @"Mentions";
+            cell.menuIcon.image = [UIImage imageNamed:@"mentions"];
             break;
     }
     
@@ -110,15 +113,13 @@
 
 
 - (IBAction)onSwipeRight:(UISwipeGestureRecognizer *)sender {
-    NSLog(@"Swipe right detected");
     [UIView animateWithDuration:.30 animations:^{
-        self.containerXConstraint.constant = 200;
+        self.containerXConstraint.constant = 130;
         [self.view layoutIfNeeded];
     }];
 }
 
 - (IBAction)onSwipeLeft:(UISwipeGestureRecognizer *)sender {
-    NSLog(@"Swipe left detected");
     [UIView animateWithDuration:.30 animations:^{
         self.containerXConstraint.constant = 0;
         [self.view layoutIfNeeded];
