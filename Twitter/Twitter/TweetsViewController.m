@@ -7,6 +7,7 @@
 //
 
 #import "TweetsViewController.h"
+#import "TweetViewController.h"
 #import "ComposeViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
@@ -14,6 +15,7 @@
 @interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) NSArray *tweets;
 @end
 
 @implementation TweetsViewController
@@ -23,7 +25,6 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView setHidden:NO];
     
     [self refreshTweets];
     
@@ -34,21 +35,39 @@
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
     
-
+    if (self.mentionsUI) {
+        self.navigationController.title = @"Mentions";
+    }
+    
 }
 
 - (void)refreshTweets {
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        NSLog(@"Refreshing tweets");
-        if (error) {
-            NSLog(@"Error getting timeline: %@", error);
-        } else {
-            NSLog(@"Got Tweets, refresh %lu", (unsigned long)tweets.count);
-            self.tweets = tweets;
-            [self.tableView reloadData];
-        }
-        [self.refreshControl endRefreshing];
-    }];
+    if (self.mentionsUI) {
+        [[TwitterClient sharedInstance] mentionsTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+            NSLog(@"Refreshing tweets");
+            if (error) {
+                NSLog(@"Error getting timeline: %@", error);
+            } else {
+                NSLog(@"Got Tweets, refresh %lu", (unsigned long)tweets.count);
+                self.tweets = tweets;
+                [self.tableView reloadData];
+            }
+            [self.refreshControl endRefreshing];
+        }];
+        
+    } else {
+        [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+            NSLog(@"Refreshing tweets");
+            if (error) {
+                NSLog(@"Error getting timeline: %@", error);
+            } else {
+                NSLog(@"Got Tweets, refresh %lu", (unsigned long)tweets.count);
+                self.tweets = tweets;
+                [self.tableView reloadData];
+            }
+            [self.refreshControl endRefreshing];
+        }];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,7 +96,13 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"ShowTweetViewSegue"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        TweetViewController *vc = segue.destinationViewController;
+        vc.tweet = self.tweets[indexPath.row];
+    }
 }
 
 

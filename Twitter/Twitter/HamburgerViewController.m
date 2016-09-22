@@ -36,7 +36,12 @@
 
     self.tweetsViewController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsNavigationController"];
     self.profileViewController = [storyboard instantiateViewControllerWithIdentifier:@"ProfileNavigationController"];
-    self.mentionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"MentionsNavigationController"];
+    self.mentionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsNavigationController"];
+    
+    self.mentionsViewController.navigationController.title = @"Mentions";
+    
+    TweetsViewController *mentions = (TweetsViewController*)self.mentionsViewController.presentedViewController;
+    mentions.mentionsUI = YES;
     
     // set tweets view as initial view
     self.currentViewController = self.tweetsViewController;

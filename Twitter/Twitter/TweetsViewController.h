@@ -10,6 +10,6 @@
 
 @interface TweetsViewController : UIViewController
 
-@property (nonatomic) NSArray *tweets;
+@property (nonatomic, assign) BOOL mentionsUI;
 
 @end

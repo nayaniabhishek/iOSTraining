@@ -1,5 +1,5 @@
 //
-//  ComposeViewController.h
+//  TweetViewController.h
 //  Twitter
 //
 //  Created by Abhishek Nayani on 9/21/16.
@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 #import "Tweet.h"
 
-@interface ComposeViewController : UIViewController
+@interface TweetViewController : UIViewController
 
-@property (nonatomic) Tweet *replyToTweet;
+@property (nonatomic) Tweet *tweet;
 
 @end

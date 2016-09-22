@@ -28,6 +28,7 @@
     if ([User currentUser]) {
         NSLog(@"There is a current user");
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
+        
     } else {
         NSLog(@"There is no current user");
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

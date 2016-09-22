@@ -30,6 +30,10 @@
     [self.profileImage setImageWithURL:currentUser.profileUrl];
     
     [self.editBox becomeFirstResponder];
+    
+    if (self.replyToTweet) {
+        self.editBox.text = [NSString stringWithFormat:@"%@ ", self.replyToTweet.user.screenname];
+    }
 }
 
 - (IBAction)onCancelButton:(UIBarButtonItem *)sender {

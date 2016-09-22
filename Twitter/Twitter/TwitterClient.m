@@ -70,7 +70,7 @@
      requestToken:credential
      success:^(BDBOAuth1Credential *accessToken) {
          NSLog(@"Got AccessToken: %@", accessToken);
-    
+         
          [self.requestSerializer saveAccessToken:accessToken];
          
          [self currentAccount:nil completion:^(User *user, NSError *error) {
@@ -81,25 +81,11 @@
                  self.loginCompletion(nil, error);
              }
          }];
-         
-         [self homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-             if (error) {
-                 NSLog(@"Error getting timeline: %@", error);
-             } else {
-             
-                 for (Tweet *tweet in tweets) {
-                     NSLog(@"%@", tweet);
-                 }
-                 
-             }
-             
-         }];
-         
      } failure:^(NSError *error) {
          NSLog(@"Got Error trying to get accessToken");
          self.loginCompletion(nil, error);
      }];
-
+    
 }
 
 
@@ -113,7 +99,7 @@
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          completion(nil, error);
      }];
-
+    
 }
 
 - (void)homeTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
@@ -124,10 +110,36 @@
          NSArray *tweets = [Tweet tweetsWithArray:responseObject];
          
          completion(tweets, nil);
-          
-      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-          completion(nil, error);
-      }];
+         
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(nil, error);
+     }];
+}
+
+- (void)userTimelineWithParams:(NSDictionary *)params user:(User *)user completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    User *forUser = user ? user : [User currentUser];
+    
+    [self
+     GET:[NSString stringWithFormat:@"1.1/statuses/user_timeline.json?include_rts=1&count=20&include_my_retweet=1&screen_name=%@", forUser.screenname]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)mentionsTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    [self
+     GET:@"1.1/statuses/mentions_timeline.json?include_my_retweet=1"
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 
 - (void)sendTweetWithParams:(NSDictionary *)params text:text completion:(void (^)(NSString *, NSError *))completion {
@@ -139,6 +151,50 @@
          
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          completion(nil, error);
+     }];
+}
+
+- (void)retweetWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(NSString *, NSError *))completion {
+    [self
+     POST:[[NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.idStr] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         completion(responseObject[@"id_str"], nil);
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(nil, error);
+     }];
+}
+
+- (void)unretweetWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(NSError *error))completion {
+    [self
+     POST:[[NSString stringWithFormat:@"1.1/statuses/destroy/%@.json", tweet.retweetIdStr] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         completion(nil);
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(error);
+     }];
+}
+
+- (void)favoriteWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(NSError *error))completion {
+    [self
+     POST:[[NSString stringWithFormat:@"1.1/favorites/create.json?id=%@", tweet.idStr] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         completion(nil);
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(error);
+     }];
+}
+
+- (void)unfavoriteWithParams:(NSDictionary *)params tweet:(Tweet *)tweet completion:(void (^)(NSError *error))completion {
+    [self
+     POST:[[NSString stringWithFormat:@"1.1/favorites/destroy.json?id=%@", tweet.idStr] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]
+     parameters:params progress:nil
+     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         completion(nil);
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         completion(error);
      }];
 }
 

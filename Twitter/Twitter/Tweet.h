@@ -11,14 +11,22 @@
 
 @interface Tweet : NSObject
 
-@property (nonatomic, strong) User *user;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSDate *timestamp;
+@property (nonatomic) User *user;
+@property (nonatomic) NSString *text;
+@property (nonatomic) NSDate *timestamp;
 @property (nonatomic) NSInteger retweetCount;
 @property (nonatomic) NSInteger favoriteCount;
+@property (nonatomic) BOOL retweeted;
+@property (nonatomic) BOOL favorited;
+@property (nonatomic) NSString *idStr;
+@property (nonatomic) NSString *retweetIdStr;
+
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
 - (NSString *)description;
+- (BOOL) retweet;
+- (BOOL) favorite;
+
 
 + (NSArray *)tweetsWithArray:(NSArray *)array;
 

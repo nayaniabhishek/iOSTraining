@@ -27,33 +27,23 @@
 }
 
 - (IBAction)onLoginButton:(UIButton *)sender {
-
+    
     TwitterClient *twitterClient = TwitterClient.sharedInstance;
-    [twitterClient login:^(User *user, NSError *error) {
-        
-        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-        
-        /*
-        [twitterClient homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-            for (Tweet *tweet in tweets) {
-                NSLog(@"Tweet: %@", tweet.text);
-            }
-        }];
-         */
-
+    [twitterClient login:^(User *user, NSError *error) {        
+        [self performSegueWithIdentifier:@"LoginHamburgerSegue" sender:nil];
     }];
     
     
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
