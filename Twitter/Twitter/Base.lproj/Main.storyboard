@@ -726,6 +726,11 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="dXf-F5-YOM">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="xn2-3a-Tnp">
+                            <connections>
+                                <segue destination="hi3-8O-pza" kind="presentation" identifier="replyBarSegue" id="pGR-fK-xXU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -744,34 +749,6 @@
             </objects>
             <point key="canvasLocation" x="3705" y="1200"/>
         </scene>
-        <!--Mentions View Controller-->
-        <scene sceneID="ChH-rJ-KK0">
-            <objects>
-                <viewController id="pHc-bP-qnl" customClass="MentionsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rkG-oe-crw"/>
-                        <viewControllerLayoutGuide type="bottom" id="O4N-PE-11U"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HIG-jn-Esh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mentions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZG-Ov-wQ7">
-                                <frame key="frameInset" minX="48" minY="176" width="206" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="x7L-kn-d4s"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dET-oF-pv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3400.8000000000002" y="-586.05697151424295"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ygf-Ne-kLz">
             <objects>
@@ -780,6 +757,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hho-mX-IaO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.1058823529" green="0.56078431370000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -802,6 +780,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Zr1-wH-eAP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.1058823529" green="0.56078431370000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -816,24 +795,6 @@
             </objects>
             <point key="canvasLocation" x="2052" y="1074.5127436281859"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="skW-W8-au9">
-            <objects>
-                <navigationController storyboardIdentifier="MentionsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8NT-aO-qYs" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="olT-L4-Dp3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pHc-bP-qnl" kind="relationship" relationship="rootViewController" id="urW-pH-njN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qn3-XN-5RZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2461.5999999999999" y="-586.05697151424295"/>
-        </scene>
     </scenes>
     <resources>
         <image name="favorite" width="16" height="16"/>
@@ -843,6 +804,6 @@
         <image name="retweet_on" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MGO-oq-5Mq"/>
+        <segue reference="pGR-fK-xXU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,7 +17,6 @@
 		AD150EAE1D923A340023884C /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EAD1D923A340023884C /* TweetsViewController.m */; };
 		AD150EB11D923B7A0023884C /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EB01D923B7A0023884C /* TweetCell.m */; };
 		AD150EB51D92F36D0023884C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EB41D92F36D0023884C /* ProfileViewController.m */; };
-		AD150EB81D92F3810023884C /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EB71D92F3810023884C /* MentionsViewController.m */; };
 		AD150EDE1D9341EA0023884C /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EDD1D9341EA0023884C /* ComposeViewController.m */; };
 		AD150EE11D9364E80023884C /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EE01D9364E80023884C /* TweetViewController.m */; };
 		AD150EE41D9493C30023884C /* LogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD150EE31D9493C30023884C /* LogoutCell.m */; };
@@ -50,8 +49,6 @@
 		AD150EB21D9252FE0023884C /* Twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twitter.entitlements; sourceTree = "<group>"; };
 		AD150EB31D92F36D0023884C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		AD150EB41D92F36D0023884C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		AD150EB61D92F3810023884C /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
-		AD150EB71D92F3810023884C /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
 		AD150EDC1D9341EA0023884C /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		AD150EDD1D9341EA0023884C /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		AD150EDF1D9364E80023884C /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
@@ -109,8 +106,6 @@
 				AD150EAD1D923A340023884C /* TweetsViewController.m */,
 				AD150EB31D92F36D0023884C /* ProfileViewController.h */,
 				AD150EB41D92F36D0023884C /* ProfileViewController.m */,
-				AD150EB61D92F3810023884C /* MentionsViewController.h */,
-				AD150EB71D92F3810023884C /* MentionsViewController.m */,
 				AD150EDC1D9341EA0023884C /* ComposeViewController.h */,
 				AD150EDD1D9341EA0023884C /* ComposeViewController.m */,
 				AD150EDF1D9364E80023884C /* TweetViewController.h */,
@@ -329,7 +324,6 @@
 				AD150EA81D91E0500023884C /* MenuCell.m in Sources */,
 				AD150E9B1D90EDD00023884C /* User.m in Sources */,
 				AD6E43C61D9051200090D20F /* AppDelegate.m in Sources */,
-				AD150EB81D92F3810023884C /* MentionsViewController.m in Sources */,
 				AD150EB11D923B7A0023884C /* TweetCell.m in Sources */,
 				AD150E9E1D90EE0E0023884C /* Tweet.m in Sources */,
 				AD6E43C31D9051200090D20F /* main.m in Sources */,

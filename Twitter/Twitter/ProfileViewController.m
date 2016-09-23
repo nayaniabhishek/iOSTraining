@@ -56,7 +56,8 @@
 }
 
 - (void)refreshTweets {
-    [[TwitterClient sharedInstance] userTimelineWithParams:nil user:self.selectedUser completion:^(NSArray *tweets, NSError *error) {
+    User *currentUser = self.selectedUser ? self.selectedUser : [User currentUser];
+    [[TwitterClient sharedInstance] userTimelineWithParams:nil user:currentUser completion:^(NSArray *tweets, NSError *error) {
         NSLog(@"Profile:Refreshing tweets");
         if (error) {
             NSLog(@"Error getting timeline: %@", error);

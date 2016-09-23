@@ -52,6 +52,8 @@
 
 - (IBAction)onReplyButton:(UIButton *)sender {
 }
+- (IBAction)onReplyBarButton:(UIBarButtonItem *)sender {
+}
 
 - (IBAction)onRetweetButton:(UIButton *)sender {
     [self.tweet retweet];
@@ -80,7 +82,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"replyTweetSegue"]) {
+    if ([[segue identifier] isEqualToString:@"replyTweetSegue"] || [[segue identifier] isEqualToString:@"replyBarSegue"]) {
         ComposeViewController *vc = [segue destinationViewController];
         vc.replyToTweet = self.tweet;
     }
