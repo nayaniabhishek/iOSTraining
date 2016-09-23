@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    User *currentUser = [User currentUser];
+    User *currentUser = self.selectedUser ? self.selectedUser : [User currentUser];
     
     self.nameLabel.text = currentUser.name;
     self.handleLabel.text = currentUser.screenname;
@@ -56,7 +56,7 @@
 }
 
 - (void)refreshTweets {
-    [[TwitterClient sharedInstance] userTimelineWithParams:nil user:nil completion:^(NSArray *tweets, NSError *error) {
+    [[TwitterClient sharedInstance] userTimelineWithParams:nil user:self.selectedUser completion:^(NSArray *tweets, NSError *error) {
         NSLog(@"Profile:Refreshing tweets");
         if (error) {
             NSLog(@"Error getting timeline: %@", error);

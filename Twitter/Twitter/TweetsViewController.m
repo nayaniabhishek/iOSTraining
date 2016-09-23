@@ -9,6 +9,7 @@
 #import "TweetsViewController.h"
 #import "TweetViewController.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
 
@@ -25,6 +26,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self refreshTweets];
     
@@ -36,7 +38,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
     
     if (self.mentionsUI) {
-        self.navigationController.title = @"Mentions";
+        self.title = @"Mentions";
     }
     
 }
@@ -81,10 +83,27 @@
     NSLog(@"Tweet : %@", self.tweets[indexPath.row]);
     [cell setTweet:self.tweets[indexPath.row]];
     
+    //Sets up taprecognizer for each imageview
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(handleTap:)];
+    
+    [cell.profileImage addGestureRecognizer:tap];
+    
+    //Enable the image to be clicked
+    cell.profileImage.userInteractionEnabled = YES;
+    cell.profileImage.tag = indexPath.row;
+    
     return cell;
 }
 
-
+- (void)handleTap:(UITapGestureRecognizer *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ProfileViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    vc.selectedUser = ((Tweet*)self.tweets[sender.view.tag]).user;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

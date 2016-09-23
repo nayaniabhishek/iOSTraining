@@ -172,7 +172,7 @@
         <!--Me-->
         <scene sceneID="g6X-uK-bG7">
             <objects>
-                <viewController id="Epc-l4-uxj" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="Epc-l4-uxj" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EyS-L8-NmQ"/>
                         <viewControllerLayoutGuide type="bottom" id="keb-sY-BM7"/>
@@ -377,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofg-ml-rEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2991.1999999999998" y="1074.5127436281859"/>
+            <point key="canvasLocation" x="2983" y="1200"/>
         </scene>
         <!--Home-->
         <scene sceneID="KNR-Fx-0Fb">
@@ -394,14 +394,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EFg-Oi-wdS">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="80" id="9Gg-rd-0HH" customClass="TweetCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="80" id="9Gg-rd-0HH" customClass="TweetCell">
                                         <rect key="frame" x="0.0" y="28" width="365" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Gg-rd-0HH" id="VPH-ZU-Xw0">
                                             <frame key="frameInset" width="365" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MU0-w3-srP">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MU0-w3-srP">
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="2ft-Mh-hd5"/>
                                                         <constraint firstAttribute="height" constant="38" id="6zq-5Y-UFq"/>
