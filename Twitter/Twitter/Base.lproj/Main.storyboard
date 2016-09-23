@@ -461,9 +461,9 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EFg-Oi-wdS" secondAttribute="trailing" constant="5" id="341-2t-BmG"/>
                             <constraint firstItem="mCN-m6-Ybg" firstAttribute="top" secondItem="EFg-Oi-wdS" secondAttribute="bottom" id="EV2-zt-QsR"/>
                             <constraint firstItem="EFg-Oi-wdS" firstAttribute="top" secondItem="mtp-v3-vBe" secondAttribute="bottom" id="a3a-oA-YjY"/>
+                            <constraint firstItem="EFg-Oi-wdS" firstAttribute="width" secondItem="tJq-Pl-Vv3" secondAttribute="width" constant="-10" id="kIQ-X1-rFI"/>
                             <constraint firstItem="EFg-Oi-wdS" firstAttribute="leading" secondItem="tJq-Pl-Vv3" secondAttribute="leading" constant="5" id="uKS-Rx-uOI"/>
                         </constraints>
                     </view>
@@ -805,6 +805,6 @@
         <image name="retweet_on" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pGR-fK-xXU"/>
+        <segue reference="MGO-oq-5Mq"/>
     </inferredMetricsTieBreakers>
 </document>

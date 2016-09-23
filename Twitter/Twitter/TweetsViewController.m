@@ -41,6 +41,9 @@
         self.title = @"Mentions";
     }
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 40;
+    
 }
 
 - (void)refreshTweets {
