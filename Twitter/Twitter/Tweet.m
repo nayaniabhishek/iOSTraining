@@ -21,7 +21,7 @@
     if (self) {
         self.dictionary = dictionary;
         self.user = [[User alloc] initWithDictionary:dictionary[@"user"]];
-        self.text = dictionary[@"text"];
+        self.text = [[[NSAttributedString alloc] initWithData:[dictionary[@"text"] dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil] string];
         
         NSString *timestampString = dictionary[@"created_at"];
         NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
