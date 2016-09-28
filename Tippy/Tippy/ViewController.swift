@@ -58,6 +58,8 @@ class ViewController: UIViewController {
         updateView()
     }
     
+    
+    
     @IBAction func onTipChange(_ sender: UISegmentedControl) {
         updateView()
     }
@@ -73,8 +75,14 @@ class ViewController: UIViewController {
         
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = NumberFormatter.Style.currency
+        
+        let locale = NSLocale.current
+        currencyFormatter.locale = locale as Locale!
+        
+        tipLabel.text = currencyFormatter.string(from: NSNumber(value:tip))
+        totalLabel.text = currencyFormatter.string(from: NSNumber(value:total))
     }
     
     override func viewWillAppear(_ animated: Bool) {
