@@ -15,6 +15,8 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
 
+        setTitle("Edit Item");
+
         editText = (EditText) findViewById(R.id.editText);
         editText.setText(getIntent().getStringExtra("todo"));
         editText.setSelection(editText.getText().length());

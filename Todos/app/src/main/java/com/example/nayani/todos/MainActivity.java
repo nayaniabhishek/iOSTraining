@@ -9,15 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import org.apache.commons.io.FileUtils;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> items;
-    ArrayAdapter<String> itemsAdapter;
+    List<ToDo> items;
+    ArrayAdapter<ToDo> itemsAdapter;
     ListView lvItems;
     EditText etEditText;
 
@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                items.remove(position);
+                ToDo todo = items.remove(position);
+                todo.delete();
+
                 itemsAdapter.notifyDataSetChanged();
-                writeItems();
                 return true;
             }
         });
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(MainActivity.this, EditItemActivity.class);
-                i.putExtra("todo", items.get(position));
+                i.putExtra("todo", items.get(position).title);
                 i.putExtra("pos", position);
                 startActivityForResult(i, 0);
             }
@@ -58,29 +59,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAddItem(View view) {
-        itemsAdapter.add(etEditText.getText().toString());
+        ToDo todo = new ToDo();
+        todo.title = etEditText.getText().toString();
+        todo.save();
+
+        itemsAdapter.add(todo);
         etEditText.setText("");
-        writeItems();
     }
 
     private void readItems() {
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try {
-            items = new ArrayList<>(FileUtils.readLines(file));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writeItems() {
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try {
-            FileUtils.writeLines(file, items);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        items = SQLite.select().from(ToDo.class).queryList();
     }
 
     @Override
@@ -88,9 +76,13 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 0) {
             String edit = data.getStringExtra("edited");
             int pos = data.getIntExtra("pos", 0);
-            items.set(pos, edit);
+
+            ToDo todo = items.get(pos);
+            todo.title = edit;
+
             itemsAdapter.notifyDataSetChanged();
-            writeItems();
+
         }
     }
+
 }
