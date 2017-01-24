@@ -15,6 +15,9 @@ public class ToDo extends BaseModel {
     @Column
     String title;
 
+    @Column
+    int priority;
+
     @Override
     public String toString() {
         return title;

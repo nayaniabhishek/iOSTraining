@@ -1,13 +1,17 @@
 package com.example.nayani.todos;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -29,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         items = new ArrayList<>();
         readItems();
 
-        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new ToDoAdapter(this, 0);
+        //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
 
         lvItems = (ListView) findViewById(R.id.lvItems);
         lvItems.setAdapter(itemsAdapter);
@@ -83,6 +88,36 @@ public class MainActivity extends AppCompatActivity {
             itemsAdapter.notifyDataSetChanged();
 
         }
+    }
+
+
+    class ToDoAdapter extends ArrayAdapter<ToDo> {
+        public ToDoAdapter(Context context, int resource) {
+            super(context, resource);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the data item for this position
+            ToDo toDo = getItem(position);
+
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.todo_cell, parent, false);
+            }
+
+            // Lookup view for data population
+            TextView title = (TextView) convertView.findViewById(R.id.todoTextView);
+            TextView priority = (TextView) convertView.findViewById(R.id.priorityTextView);
+
+            // Populate the data into the template view using the data object
+            title.setText(toDo.title);
+            priority.setText("High");
+
+            // Return the completed view to render on screen
+            return convertView;
+        }
+
     }
 
 }
