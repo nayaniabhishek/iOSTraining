@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/posterView"
+        android:id="@+id/landscapePosterView"
         tools:src="@mipmap/ic_launcher"/>
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginTop="12dp"
         android:id="@+id/titleText"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/posterView"
-        android:layout_toEndOf="@+id/posterView"
+        android:layout_toRightOf="@+id/landscapePosterView"
+        android:layout_toEndOf="@+id/landscapePosterView"
         android:textAppearance="@android:style/TextAppearance.Material.Headline" />
 </RelativeLayout>

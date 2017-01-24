@@ -14,11 +14,13 @@ public class Movie {
     private String posterPath;
     private String originalTitle;
     private String overView;
+    private String backdropPath;
 
     public Movie(JSONObject jsonObject) throws JSONException {
         this.posterPath = jsonObject.getString("poster_path");
         this.originalTitle = jsonObject.getString("original_title");
         this.overView = jsonObject.getString("overview");
+        this.backdropPath = jsonObject.getString("backdrop_path");
     }
 
     public static ArrayList<Movie> fromJsonArray(JSONArray array) {
@@ -45,6 +47,10 @@ public class Movie {
 
     public String getOverView() {
         return overView;
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w780%s", backdropPath);
     }
 
     @Override

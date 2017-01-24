@@ -1,6 +1,7 @@
 package com.yahoo.nayani.flixter.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,13 @@ import java.util.ArrayList;
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
+    // View lookup cache
+    private static class ViewHolder {
+        TextView title;
+        TextView overview;
+        ImageView image;
+    }
+
 
     public MovieArrayAdapter(Context context, ArrayList<Movie> items) {
         super(context, android.R.layout.simple_list_item_1, items);
@@ -30,25 +38,37 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         // Get the data item for this position
         Movie movie = getItem(position);
 
+        ViewHolder viewHolder;
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.portrait_item, parent, false);
+
+            viewHolder = new ViewHolder();
+            viewHolder.title = (TextView) convertView.findViewById(R.id.titleText);
+            viewHolder.overview = (TextView) convertView.findViewById(R.id.overviewText);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.landscapePosterView);
+
+            // Cache the viewHolder object inside the fresh view
+            convertView.setTag(viewHolder);
+
+        } else {
+            // View is being recycled, retrieve the viewHolder object from tag
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Lookup view for data population
-        TextView title = (TextView) convertView.findViewById(R.id.titleText);
-        TextView overview = (TextView) convertView.findViewById(R.id.overviewText);
-        ImageView image = (ImageView) convertView.findViewById(R.id.posterView);
-
         // Populate the data into the template view using the data object
-        title.setText(movie.getOriginalTitle());
-        overview.setText(movie.getOverView());
-
+        viewHolder.title.setText(movie.getOriginalTitle());
+        viewHolder.overview.setText(movie.getOverView());
 
         String imageUri = movie.getPosterPath();
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            imageUri = movie.getBackdropPath();
+        }
+
         Picasso.with(getContext()).load(imageUri)
                 .placeholder(R.mipmap.ic_launcher)
-                .into(image);
+                .into(viewHolder.image);
 
         // Return the completed view to render on screen
         return convertView;
