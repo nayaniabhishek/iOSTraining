@@ -15,17 +15,21 @@ import com.yahoo.nayani.flixter.models.Movie;
 
 import java.util.ArrayList;
 
-/**
- * Created by nayani on 1/23/17.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
     // View lookup cache
-    private static class ViewHolder {
-        TextView title;
-        TextView overview;
-        ImageView image;
+    static class ViewHolder {
+        @BindView(R.id.titleText) TextView title;
+        @BindView(R.id.overviewText) TextView overview;
+        @BindView(R.id.landscapePosterView) ImageView image;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
 
@@ -43,10 +47,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.portrait_item, parent, false);
 
-            viewHolder = new ViewHolder();
-            viewHolder.title = (TextView) convertView.findViewById(R.id.titleText);
-            viewHolder.overview = (TextView) convertView.findViewById(R.id.overviewText);
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.landscapePosterView);
+            viewHolder = new ViewHolder(convertView);
 
             // Cache the viewHolder object inside the fresh view
             convertView.setTag(viewHolder);

@@ -19,14 +19,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class MovieActivity extends AppCompatActivity {
 
     private ArrayList<Movie> movies;
     private MovieArrayAdapter movieAdapter;
-    private ListView lvItems;
-    private SwipeRefreshLayout swipeContainer;
+
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.lvItems) ListView lvItems;
 
 
     @Override
@@ -34,7 +37,8 @@ public class MovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
-        lvItems = (ListView) findViewById(R.id.lvItems);
+        ButterKnife.bind(this);
+
         movies = new ArrayList<>();
         movieAdapter = new MovieArrayAdapter(this, movies);
         lvItems.setAdapter(movieAdapter);
@@ -47,10 +51,6 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
 
-
-
-        // Lookup the swipe container view
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -61,6 +61,7 @@ public class MovieActivity extends AppCompatActivity {
                 fetchMovieListing();
             }
         });
+
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
