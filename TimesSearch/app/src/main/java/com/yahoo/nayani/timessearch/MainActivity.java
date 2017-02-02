@@ -1,6 +1,7 @@
 package com.yahoo.nayani.timessearch;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements SettingsDialog.Se
         rvArticleGrid.setAdapter(adapter);
 
         filterParams = new HashMap<>();
+
+        SpacesItemDecoration decoration = new SpacesItemDecoration(16);
+        rvArticleGrid.addItemDecoration(decoration);
 
         ItemClickSupport.addTo(rvArticleGrid).setOnItemClickListener(
                 new ItemClickSupport.OnItemClickListener() {
@@ -209,5 +213,20 @@ public class MainActivity extends AppCompatActivity implements SettingsDialog.Se
     }
 
 
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private final int mSpace;
+        public SpacesItemDecoration(int space) {
+            this.mSpace = space;
+        }
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.left = mSpace;
+            outRect.right = mSpace;
+            outRect.bottom = mSpace;
+            // Add top margin only for the first item to avoid double space between items
+            if (parent.getChildAdapterPosition(view) == 0)
+                outRect.top = mSpace;
+        }
+    }
 
 }

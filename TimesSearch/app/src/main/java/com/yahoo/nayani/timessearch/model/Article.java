@@ -46,7 +46,10 @@ public class Article {
 
         for (int i = 0; i < responseArray.length(); i++) {
             try {
-                articles.add(new Article(responseArray.getJSONObject(i)));
+                Article article = new Article(responseArray.getJSONObject(i));
+                if (article.getThumbnail() != null) {
+                    articles.add(article);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
